@@ -1,0 +1,14 @@
+{
+  "devDependencies": {
+    "@faker-js/faker": "^8.4.0",
+    "nodemon": "^3.0.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "mongodb": "^6.3.0"
+  },
+  "scripts": {
+    "start": "node test",
+    "dev": "nodemon test"
+  }
+}
