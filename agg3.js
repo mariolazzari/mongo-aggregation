@@ -1,0 +1,57 @@
+const { MongoClient } = require("mongodb");
+require("dotenv").config();
+
+const uri = process.env.MONGODB_URI;
+const client = new MongoClient(uri);
+
+const agg = [
+  {
+    $match: {
+      quantity: {
+        $gt: 500,
+      },
+    },
+  },
+  {
+    $addFields: {
+      discount: {
+        $cond: [
+          {
+            $lte: ["$price", 500],
+          },
+          0.4,
+          0.65,
+        ],
+      },
+    },
+  },
+  {
+    $addFields: {
+      soldPrics: {
+        $multiply: [
+          "$price",
+          {
+            $subtract: [1, "$discount"],
+          },
+        ],
+      },
+    },
+  },
+  {
+    $unset: "quantity",
+  },
+];
+
+const run = async () => {
+  try {
+    const db = client.db("linkedin");
+    const res = await db.collection("products").aggregate(agg).toArray();
+    console.log("Aggregation 3:", res);
+  } catch (ex) {
+    console.log("Mongo aggregation error:", ex);
+  } finally {
+    client.close();
+  }
+};
+
+run();

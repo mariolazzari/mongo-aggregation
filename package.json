@@ -9,6 +9,9 @@
   },
   "scripts": {
     "start": "node test",
-    "dev": "nodemon test"
+    "dev": "nodemon test",
+    "agg1": "nodemon agg1",
+    "agg2": "nodemon agg2",
+    "agg3": "nodemon agg3"
   }
 }
