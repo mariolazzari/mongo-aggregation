@@ -14,6 +14,8 @@
     "agg2": "nodemon agg2",
     "agg3": "nodemon agg3",
     "lookup": "nodemon lookup",
-    "unwind": "nodemon unwind"
+    "unwind": "nodemon unwind",
+    "func": "nodemon func",
+    "acc": "nodemon acc"
   }
 }

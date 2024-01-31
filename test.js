@@ -1,4 +1,3 @@
-const path = require("path");
 const MongoClient = require("mongodb").MongoClient;
 require("dotenv").config();
 
